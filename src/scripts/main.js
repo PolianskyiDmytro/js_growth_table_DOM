@@ -6,9 +6,15 @@ const appendCol = document.querySelector('.append-column');
 const removeRow = document.querySelector('.remove-row');
 const removeCol = document.querySelector('.remove-column');
 const col = document.createElement('td');
+const row = document.createElement('tr');
 
 appendRow.addEventListener('click', () => {
-  tableBody.appendChild(tableBody.firstChild.cloneNode(true));
+  const newRow = row.cloneNode(true);
+
+  for (let i = 0; i < tableBody.firstElementChild.children.length; i++) {
+    newRow.appendChild(col.cloneNode(true));
+  }
+  tableBody.appendChild(newRow);
 
   if (tableBody.children.length === 10) {
     appendRow.disabled = true;
