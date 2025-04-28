@@ -7,6 +7,8 @@ const removeRow = document.querySelector('.remove-row');
 const removeCol = document.querySelector('.remove-column');
 const col = document.createElement('td');
 const row = document.createElement('tr');
+const maxVal = 10;
+const minVal = 2;
 
 appendRow.addEventListener('click', () => {
   const newRow = row.cloneNode(true);
@@ -16,7 +18,7 @@ appendRow.addEventListener('click', () => {
   }
   tableBody.appendChild(newRow);
 
-  if (tableBody.children.length === 10) {
+  if (tableBody.children.length === maxVal) {
     appendRow.disabled = true;
   } else {
     removeRow.disabled = false;
@@ -26,7 +28,7 @@ appendRow.addEventListener('click', () => {
 removeRow.addEventListener('click', () => {
   tableBody.removeChild(tableBody.lastElementChild);
 
-  if (tableBody.children.length === 2) {
+  if (tableBody.children.length === minVal) {
     removeRow.disabled = true;
   } else {
     appendRow.disabled = false;
@@ -38,7 +40,7 @@ appendCol.addEventListener('click', () => {
     tr.appendChild(col.cloneNode(true));
   });
 
-  if (tableBody.firstElementChild.children.length === 10) {
+  if (tableBody.firstElementChild.children.length === maxVal) {
     appendCol.disabled = true;
   } else {
     removeCol.disabled = false;
@@ -50,7 +52,7 @@ removeCol.addEventListener('click', () => {
     tr.removeChild(tr.lastElementChild);
   });
 
-  if (tableBody.firstElementChild.children.length === 2) {
+  if (tableBody.firstElementChild.children.length === minVal) {
     removeCol.disabled = true;
   } else {
     appendCol.disabled = false;
