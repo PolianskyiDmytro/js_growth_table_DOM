@@ -1,6 +1,5 @@
 'use strict';
 
-const tableBody = document.querySelector('.field tbody');
 const appendRow = document.querySelector('.append-row');
 const appendCol = document.querySelector('.append-column');
 const removeRow = document.querySelector('.remove-row');
@@ -11,6 +10,7 @@ const maxVal = 10;
 const minVal = 2;
 
 appendRow.addEventListener('click', () => {
+  const tableBody = document.querySelector('.field tbody');
   const newRow = row.cloneNode(true);
 
   for (let i = 0; i < tableBody.firstElementChild.children.length; i++) {
@@ -26,6 +26,8 @@ appendRow.addEventListener('click', () => {
 });
 
 removeRow.addEventListener('click', () => {
+  const tableBody = document.querySelector('.field tbody');
+
   tableBody.removeChild(tableBody.lastElementChild);
 
   if (tableBody.children.length === minVal) {
@@ -36,6 +38,8 @@ removeRow.addEventListener('click', () => {
 });
 
 appendCol.addEventListener('click', () => {
+  const tableBody = document.querySelector('.field tbody');
+
   Array.from(tableBody.children).forEach((tr) => {
     tr.appendChild(col.cloneNode(true));
   });
@@ -48,6 +52,8 @@ appendCol.addEventListener('click', () => {
 });
 
 removeCol.addEventListener('click', () => {
+  const tableBody = document.querySelector('.field tbody');
+
   Array.from(tableBody.children).forEach((tr) => {
     tr.removeChild(tr.lastElementChild);
   });
