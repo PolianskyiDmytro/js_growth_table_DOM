@@ -14,6 +14,10 @@ appendRow.addEventListener('click', () => {
   const newRow = row.cloneNode(true);
 
   for (let i = 0; i < tableBody.firstElementChild.children.length; i++) {
+    if (tableBody.rows.length === maxVal) {
+      return;
+    }
+
     newRow.appendChild(col.cloneNode(true));
   }
   tableBody.appendChild(newRow);
@@ -39,6 +43,10 @@ removeRow.addEventListener('click', () => {
 
 appendCol.addEventListener('click', () => {
   const tableBody = document.querySelector('.field tbody');
+
+  if (tableBody.rows[0].children.length === maxVal) {
+    return;
+  }
 
   Array.from(tableBody.children).forEach((tr) => {
     tr.appendChild(col.cloneNode(true));
